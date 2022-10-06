@@ -8,10 +8,38 @@
 
 <meta name="description" content="Página de la Comunidad Ruby MX, donde cada mes nos reunímos para hablar sobre Ruby y su ecosistema. Con sede en Guadalajara, Jalisco, buscamos ser un espacio de reunión para los Rubyístas de México, y, por qué no, de habla hispana" />
 <script src="https://kit.fontawesome.com/b416b8c4de.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/_bridgetown/static/css/main.86ee32a490d9798d98c7.css" />
+<link rel="stylesheet" href="/_bridgetown/static/css/main.8b07a7920105ed1bd465.css" />
 <script src="https://unpkg.com/simplycountdown.js@1.7.0/dist/simplyCountdown.min.js" defer></script>
-<script src="/_bridgetown/static/js/main.4aacf6bd9a6d06c7a8fd.js" defer></script>
+<script src="/_bridgetown/static/js/main.6be9ce426305a29a27bc.js" defer></script>
+<script type="module">let lastmod = 0
+function startReloadConnection() {
+  const evtSource = new EventSource("/_bridgetown/live_reload")
+  evtSource.onmessage = event => {
+    if (event.data == "reloaded!") {
+      location.reload()
+    } else {
+      const newmod = Number(event.data)
+      if (lastmod > 0 && newmod > 0 && lastmod < newmod) {
+        location.reload()
+      } else {
+        lastmod = newmod
+      }
+    }
+  }
+  evtSource.onerror = event => {
+    if (evtSource.readyState === 2) {
+      // reconnect with new object
+      evtSource.close()
+      console.warn("Live reload: attempting to reconnect in 3 seconds...")
 
+      setTimeout(() => startReloadConnection(), 3000)
+    }
+  }
+}
+setTimeout(() => {
+  startReloadConnection()
+}, 500)
+</script>
 
   </head>
   <body class="page ">
@@ -19,8 +47,15 @@
   <a href="/">Inicio</a>
   <a href="/eventos">Eventos</a>
   <a href="/cfp">Quiero dar una charla</a>
-  <a href="/codigo_de_conducta">C&oacute;digo de Conducta</a>
+  <a href="/codigo_de_conducta">Código de Conducta</a>
+  <a href="/patrocinadores">Patrocinadores</a>
   <a href="/contacto">Contacto</a>
+
+
+  <a class="navbar__lang" href="/en/home">English</a>
+  <a class="navbar__lang" href="/">Español</a>
+
+
   <a href="javascript:void(0);" class="icon" onclick="window.toggleMenu()">
     <i class="fa fa-bars"></i>
   </a>
